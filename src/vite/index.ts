@@ -1,8 +1,8 @@
-ï»¿import type { VersionBuildMeta, VersionManifestPluginOptions } from './types'
+import type { VersionBuildMeta, VersionManifestPluginOptions } from './types'
 export type { VersionBuildMeta, VersionManifestPluginOptions } from './types'
-export { createVersionManifestPlugin } from './version-manifest'
+export { createVersionManifestPlugin } from './version-manifest.js'
 
-// ç»Ÿä¸€ç”Ÿæˆæ„å»ºæœŸç‰ˆæœ¬å…ƒä¿¡æ¯ï¼Œä¾› Vite define ä¸ version.json å…±åŒä½¿ç”¨ã€‚
+// Í³Ò»Éú³É¹¹½¨ÆÚ°æ±¾ÔªĞÅÏ¢£¬¹© Vite define Óë version.json ¹²Í¬Ê¹ÓÃ¡£
 export function createVersionBuildMeta(version: string, buildTime = new Date().toISOString()): VersionBuildMeta {
   const normalizedVersion = version || '0.0.0'
   const buildId = `${normalizedVersion}-${buildTime}`

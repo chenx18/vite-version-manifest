@@ -1,6 +1,6 @@
-﻿{
+{
   "name": "vite-version-manifest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vite 构建期版本清单插件，用于注入版本常量并生成 version.json。",
   "type": "module",
   "license": "MIT",
