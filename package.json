@@ -1,0 +1,45 @@
+﻿{
+  "name": "vite-version-manifest",
+  "version": "1.0.0",
+  "description": "Vite 构建期版本清单插件，用于注入版本常量并生成 version.json。",
+  "type": "module",
+  "license": "MIT",
+  "author": "chenx18_cn",
+  "keywords": [
+    "vite",
+    "version-manifest",
+    "version-json",
+    "build-id",
+    "cache-busting"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "prepublishOnly": "npm run build",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "vite": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  }
+}
