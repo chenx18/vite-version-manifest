@@ -8,4 +8,5 @@
 export interface VersionManifestPluginOptions {
   fileName?: string
   pretty?: boolean
+  injectRuntimeGlobals?: boolean
 }

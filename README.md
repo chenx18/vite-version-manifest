@@ -10,6 +10,7 @@
 - 注入 `__APP_VERSION__`
 - 注入 `__APP_BUILD_TIME__`
 - 注入 `__APP_BUILD_ID__`
+- 注入 `__APP_BASE_URL__`
 - 在构建产物中输出版本清单文件
 
 这个包通常与 `vue3-version-update` 配套使用，但也可以单独使用。
@@ -44,6 +45,7 @@ export default defineConfig({
 - `__APP_VERSION__`
 - `__APP_BUILD_TIME__`
 - `__APP_BUILD_ID__`
+- `__APP_BASE_URL__`
 - `dist/version.json`
 
 示例：
@@ -150,9 +152,13 @@ interface VersionManifestPluginOptions {
 
 不会。它只负责生成版本数据。真正的缓存头仍然需要部署层配置。
 
-### 3. 这个包是否只在生产构建生效
+### 3. 开发环境是否也能访问 `version.json`
 
-`createVersionManifestPlugin()` 本身只在构建阶段输出版本清单文件。`createVersionBuildMeta()` 生成的 `define` 常量则由你的 Vite 配置决定是否注入。
+可以。当前版本会在 `vite serve` 阶段直接通过中间件返回 `version.json`，这样开发环境和生产环境都能统一请求同一个版本清单地址。
+
+### 4. 为什么还要注入 `__APP_BASE_URL__`
+
+在微前端场景里，子应用请求 `version.json` 时不能简单依赖基座域名。插件会把当前项目的 `base` 作为 `__APP_BASE_URL__` 注入到运行时，配合 `vue3-version-update` 可以正确拼出子应用自己的版本清单地址。
 
 ## 相关包
 
